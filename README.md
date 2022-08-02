@@ -31,5 +31,5 @@ And like this for failed tests
 
 -----Test starts-----
 --> [error]: test sort failed -> 1,2,3,4, != 1,2,3,3,
---> [error]: 1 tests failed!
+--> [error]: 1/3 tests failed!
 ```

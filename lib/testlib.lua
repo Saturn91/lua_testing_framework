@@ -85,7 +85,7 @@ end
 
 function testlib.result()
     
-    if failed > 0 then log_error(""..failed.. " tests failed!") else 
+    if failed > 0 then log_error(""..failed.."/"..passed.." tests failed!") else 
         log("test succeded: "..passed.."/"..tests.." passed")
     end
 end
