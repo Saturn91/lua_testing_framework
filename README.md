@@ -12,8 +12,35 @@
 
 # API
 The api is keept really simple, use t.assert_equal(a, b, "a has to equal b").
+a and b are the two objects / variables or function outputs you whish to compare, the third (and optional) parameter is a description. The result will look like this
 
-a and b are the two objects / variables or function outputs you whish to compare, the third (and optional) parameter is a description. The result will look like this for passed tests:
+So to test if this function works correctly
+```lua
+function is_hello(text)
+  return text == 'hello'
+end
+```
+1. Write the folowing code in the tested_code.lua file
+```
+function is_hello(text)
+  return text == 'hello'
+end
+
+function code.is_hello(text)
+    return (sort(text))
+end
+```
+2. Add the actual test function in the test.lua file in the run() function
+```
+function test.run()
+    t.assert_equal(c.is_hello('hello'),true,"should be hello")
+    t.assert_equal(c.is_hello('not hello'),false,"should not be hello")
+end
+```
+3. run the test to see if you implemented your function correctly ```lua ./lib/main.lua``` to test
+
+
+for passed tests:
 
 ```
 ...>lua ./lib/main.lua         
