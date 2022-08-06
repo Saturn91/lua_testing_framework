@@ -19,6 +19,14 @@ function code.sort(a)
     return (sort(a))
 end
 
+function is_hello(text)
+	return text == 'hello'
+end
+
+function code.is_hello(text)
+	return (is_hello(text))
+end
+
 function wrap_int(int, min_i, max_i, add_i)
 	if not add_i then add_i = 0 end
 	local new_i = int+add_i
