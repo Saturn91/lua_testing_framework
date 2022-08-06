@@ -27,7 +27,7 @@ function is_hello(text)
 end
 
 function code.is_hello(text)
-    return (sort(text))
+    return (is_hello(text))
 end
 ```
 2. Add the actual test function in the test.lua file in the run() function
