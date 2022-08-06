@@ -21,7 +21,7 @@ function is_hello(text)
 end
 ```
 1. Write the folowing code in the tested_code.lua file
-```
+```lua
 function is_hello(text)
   return text == 'hello'
 end
@@ -31,7 +31,7 @@ function code.is_hello(text)
 end
 ```
 2. Add the actual test function in the test.lua file in the run() function
-```
+```lua
 function test.run()
     t.assert_equal(c.is_hello('hello'),true,"should be hello")
     t.assert_equal(c.is_hello('not hello'),false,"should not be hello")
