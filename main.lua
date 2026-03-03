@@ -11,11 +11,11 @@ else
 end
 local extensive = arg[1] == "-l"
 
-test = require("tests/unitTestLib/testlib")
+test = require("tests.unitTestLib.testlib")
 test.silent = not extensive
 test.specificTest = specificTest
 
-local t = require("tests/unittests/test")
+local t = require("tests.unitTestLib.test")
 
 test.init()
 t.run(test)
