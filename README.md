@@ -26,13 +26,9 @@ local M = {}
 M.totalTime = 0
 
 function M.run(t)
-    local start = os.clock()
-
     t.newSection("myModule")
     t.assert_equal(myModule.add(1, 2), 3, "1 + 2 should equal 3")
     t.assert_equal(myModule.greet("world"), "hello world", "greet returns correct string")
-
-    M.totalTime = os.clock() - start
 end
 
 return M
