@@ -19,4 +19,4 @@ local t = require("tests.unitTestLib.test")
 
 test.init()
 t.run(test)
-test.result(false, t.totalTime, 0.2) --max 0.2s for all tests
+test.result(false, test.totalTime, 0.2) --max 0.2s for all tests
