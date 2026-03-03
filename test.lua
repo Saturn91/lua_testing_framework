@@ -17,7 +17,7 @@ function testScript.run(_testLib)
     testLib = _testLib
     testLib.totalTime = 0
 
-    local testFilesDirectory = "tests/unittests/tests/"
+    local testFilesDirectory = "tests/unittests/"
 
     -- Get all test files from the directory
     local testFiles = getFilesInDirectory(testFilesDirectory)
