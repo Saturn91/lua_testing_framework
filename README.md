@@ -1,4 +1,83 @@
-# Lua Test Frame work
+# Lua Test Framework
+
+## Using as a Git Submodule (recommended)
+
+This is the recommended way to integrate the framework into your Lua project without copying files manually.
+
+### 1. Add the submodule
+
+From the root of your project, run:
+
+```bash
+git submodule add https://github.com/Saturn91/lua_testing_framework.git tests/unitTestLib
+```
+
+This places the framework at `tests/unitTestLib/`, which matches the require paths used internally.
+
+### 2. Initialize submodules
+
+```bash
+git clone --recurse-submodules <your-repo-url>
+```
+
+Or, if already cloned:
+
+```bash
+git submodule update --init
+```
+
+### 3. Create your test file
+
+Create `tests/unittests/test.lua`:
+
+```lua
+-- tests/unittests/test.lua
+local myModule = require("src/myModule") -- your code under test
+
+local M = {}
+M.totalTime = 0
+
+function M.run(t)
+    local start = os.clock()
+
+    t.newSection("myModule")
+    t.assert_equal(myModule.add(1, 2), 3, "1 + 2 should equal 3")
+    t.assert_equal(myModule.greet("world"), "hello world", "greet returns correct string")
+
+    M.totalTime = os.clock() - start
+end
+
+return M
+```
+
+### 4. Run your tests
+
+Run from your **project root** so the require paths resolve correctly:
+
+```bash
+lua tests/unitTestLib/main.lua      # quiet output (pass/fail summary only)
+lua tests/unitTestLib/main.lua -l   # verbose output (all test details)
+```
+
+### Project layout
+
+```
+your-project/
+├── src/
+│   └── myModule.lua                ← your code
+└── tests/
+    ├── unitTestLib/                ← this submodule (contains main.lua)
+    │   ├── main.lua
+    │   ├── testlib.lua
+    │   ├── JsonUtil.lua
+    │   └── jsonDecode.lua
+    └── unittests/
+        └── test.lua                ← your tests (you create this)
+```
+
+---
+
+## Manual setup (alternative)
 
 1. copy the content of this git repo in your project.
 
@@ -12,35 +91,8 @@
 
 # API
 The api is keept really simple, use t.assert_equal(a, b, "a has to equal b").
-a and b are the two objects / variables or function outputs you whish to compare, the third (and optional) parameter is a description. The result will look like this
 
-So to test if this function works correctly
-```lua
-function is_hello(text)
-  return text == 'hello'
-end
-```
-1. Write the folowing code in the tested_code.lua file
-```lua
-function is_hello(text)
-  return text == 'hello'
-end
-
-function code.is_hello(text)
-    return (is_hello(text))
-end
-```
-2. Add the actual test function in the test.lua file in the run() function
-```lua
-function test.run()
-    t.assert_equal(c.is_hello('hello'),true,"should be hello")
-    t.assert_equal(c.is_hello('not hello'),false,"should not be hello")
-end
-```
-3. run the test to see if you implemented your function correctly ```lua ./lib/main.lua``` to test
-
-
-for passed tests:
+a and b are the two objects / variables or function outputs you whish to compare, the third (and optional) parameter is a description. The result will look like this for passed tests:
 
 ```
 ...>lua ./lib/main.lua         
