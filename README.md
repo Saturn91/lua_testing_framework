@@ -16,21 +16,18 @@ This places the framework at `tests/unitTestLib/`, which matches the require pat
 
 ### 2. Create your test file
 
-Create `tests/unittests/test.lua`:
+Create `tests/unitTestLib/test.lua` (alongside the submodule files):
 
 ```lua
--- tests/unittests/test.lua
-local myModule = require("src/myModule") -- your code under test
+-- tests/unitTestLib/test.lua
+local myModule = require("src.myModule") -- your code under test
 
-local M = {}
-M.totalTime = 0
-
-function M.run(t)
+function run(t)
     t.assert_equal(myModule.add(1, 2), 3, "1 + 2 should equal 3")
     t.assert_equal(myModule.greet("world"), "hello world", "greet returns correct string")
 end
 
-return M
+return run
 ```
 
 ### 3. Run your tests
@@ -49,12 +46,11 @@ your-project/
 ├── src/
 │   └── myModule.lua                ← your code
 └── tests/
-    ├── unitTestLib/                ← this submodule (contains main.lua)
-    │   ├── main.lua
-    │   ├── testlib.lua
-    │   ├── JsonUtil.lua
-    │   └── jsonDecode.lua
-    └── unittests/
+    └── unitTestLib/                ← this submodule (contains main.lua)
+        ├── main.lua
+        ├── testlib.lua
+        ├── JsonUtil.lua
+        ├── jsonDecode.lua
         └── test.lua                ← your tests (you create this)
 ```
 
