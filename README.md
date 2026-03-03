@@ -14,19 +14,7 @@ git submodule add https://github.com/Saturn91/lua_testing_framework.git tests/un
 
 This places the framework at `tests/unitTestLib/`, which matches the require paths used internally.
 
-### 2. Initialize submodules
-
-```bash
-git clone --recurse-submodules <your-repo-url>
-```
-
-Or, if already cloned:
-
-```bash
-git submodule update --init
-```
-
-### 3. Create your test file
+### 2. Create your test file
 
 Create `tests/unittests/test.lua`:
 
@@ -50,7 +38,7 @@ end
 return M
 ```
 
-### 4. Run your tests
+### 3. Run your tests
 
 Run from your **project root** so the require paths resolve correctly:
 
